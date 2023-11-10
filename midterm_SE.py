@@ -1,6 +1,8 @@
 import validators as v #https://snyk.io/blog/secure-python-url-validation/
-tab_list = [{"title": "Youtube", "url": "http://example.com/Youtube"},
-             {"title": "Replit", "url": "http://example.com/Replit"}]
+import requests
+from bs4 import BeautifulSoup 
+tab_list = [{"title": "Youtube", "url": "https://www.youtube.com/"}
+             ]
 
 def addTab(tab_list,title,url):#choice 1 append a new dictionary to the list
     is_Url=v.url(url)# gives true if its a url or false if not 
@@ -24,6 +26,11 @@ def Close_Tab(tab_list,index=None): # choice 2 delete tab
 
 def Switch_Tab(tab_list,index=None):# choice 3 
     if index is None:
-        print(tab_list[-1])
+
+      html_text=requests.get(tab_list[-1]["url"])#https://www.w3schools.com/python/ref_requests_get.asp
+      soup=BeautifulSoup(html_text.content,'html.parser')#https://www.educative.io/answers/beautiful-soup-prettify
+      print(soup.prettify())  # prittify method got from a wbsite link above 
     else :
-      print(tab_list[index])
+      html_text=requests.get(tab_list[index]["url"])#https://www.w3schools.com/python/ref_requests_get.asp
+      soup=BeautifulSoup(html_text.content,'html.parser')#https://www.educative.io/answers/beautiful-soup-prettify
+      print(soup.prettify())  # prittify method got from a wbsite link above 
