@@ -33,3 +33,10 @@ def Switch_Tab(tab_list,index=None):# choice 3
       html_text=requests.get(tab_list[index]["url"])#https://www.w3schools.com/python/ref_requests_get.asp
       soup=BeautifulSoup(html_text.content,'html.parser')#https://www.educative.io/answers/beautiful-soup-prettify
       print(soup.prettify())  # prittify method got from a wbsite link above 
+def display_Tabs(tab_list, depth=0):  # choice 4 
+    for tab in tab_list:
+        if 'title' in tab:
+            print(" - " * depth + f"{tab['title']}")  # print the title of the main tab
+
+        if 'nested_tabs' in tab:
+            display_Tabs(tab['nested_tabs'], depth + 1)  # recursively display nested tabs with increased depth
