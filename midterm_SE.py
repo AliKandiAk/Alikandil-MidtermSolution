@@ -53,3 +53,11 @@ def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
 def clear_Tabs(tablist):#choice 6 
    tablist.clear() # cleared all the tabs that are open
    print("tabs have been cleard")
+
+def SaveTabs(tab_list, filepath):#choice 7 
+    with open(filepath, 'w') as jsonfile: # open file to write for it 
+        
+        json_data = json.dumps(tab_list) # convert to json formated string using .dumps
+        
+        # Write the JSON-formatted string to the file
+        jsonfile.write(json_data) # writing to the file the formated string
