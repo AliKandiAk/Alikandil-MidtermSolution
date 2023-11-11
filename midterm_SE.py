@@ -65,3 +65,8 @@ def is_json(file):
       return True
   else:
       return False
+
+def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
+    with open(file) as f:
+      d = json.load(f)
+    print(d)
