@@ -49,3 +49,7 @@ def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
         print(f"Nested tab has beeen added to '{tab_list[index]['title']}' at the index {index}.")
     else:
         print(f"Invalid index: {index}")
+        
+def clear_Tabs(tablist):#choice 6 
+   tablist.clear() # cleared all the tabs that are open
+   print("tabs have been cleard")
