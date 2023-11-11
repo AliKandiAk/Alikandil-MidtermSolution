@@ -90,19 +90,24 @@ def SaveTabs(tab_list, filepath):#choice 7
         # Write the JSON-formatted string to the file
         jsonfile.write(json_data) # writing to the file the formated string 
       
-def checkjson(file):
-  pass
-file='file.json'
-
+def is_json(file):
+  check=file.split('.')
+  if check[1]=='json'and len(check)==1:
+      print("is json file")
+      return True
+  else:
+      print("is not json file")
+file='file.json.ali'
+is_json(file)
 
 def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
     with open(file) as f:
       d = json.load(f)
     print(d)
 
-addTab(tab_list, "hello new", "https://www.facebook.com/")
+#addTab(tab_list, "hello new", "https://www.facebook.com/")
 
-nest={'title': 'hello boys', 'url': 'https://www.https://www.facebook.com/.com', 'index': 3}
-Open_nestedTab(tab_list, nest, 3)
-SaveTabs(tab_list,file)
-print(tab_list)
+#nest={'title': 'hello boys', 'url': 'https://www.https://www.facebook.com/.com', 'index': 3}
+#Open_nestedTab(tab_list, nest, 3)
+#SaveTabs(tab_list,file)
+#print(tab_list)
