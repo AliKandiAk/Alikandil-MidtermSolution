@@ -69,12 +69,10 @@ def SaveTabs(tab_list, filepath):#choice 7 #https://www.datacamp.com/tutorial/js
       
 def is_json(file):
   check=file.split('.') # split creats a list and put items on each index after "."
-  if check[1]=='json'and len(check)==1:# check if at index 1 has word string json and the length is only 1 so only 2 indexs 0 and 1 
-      return True
+  if check[1]=='json'and len(check)==2:# check if at index 1 has word string json and the length is only 1 so only 2 indexs 0 and 1 
+        return True
   else:
       return False
-
-
 def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
     with open(file) as f:
       d = json.load(f)# loads the data from json file to python file and print it 
@@ -119,6 +117,7 @@ while True:
           file=input('enter file path')
           if is_json(file)==True:
             SaveTabs(tab_list,file)
+            print("Tabs have been saved")
           else:
               print("not a json file")
       elif x=="8":
