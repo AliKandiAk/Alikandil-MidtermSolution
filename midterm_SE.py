@@ -30,8 +30,9 @@ tab_list = [
 ]
 def addTab(tab_list,title,url):#choice 1 append a new dictionary to the list
     is_Url=v.url(url)# gives true if its a url or false if not 
+    index=len(tab_list)
     if is_Url:
-      new_tab= {"title":title,"url":"https://www."+url+".com"}
+      new_tab= {"title":title,"url":"https://www."+url+".com","index":index}
       tab_list.append(new_tab)
       print("Welcome to"+title)
       print(tab_list)
@@ -98,5 +99,10 @@ def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5a
     with open(file) as f:
       d = json.load(f)
     print(d)
-  
-Import_Tabs(file) 
+
+addTab(tab_list, "hello new", "https://www.facebook.com/")
+
+nest={'title': 'hello boys', 'url': 'https://www.https://www.facebook.com/.com', 'index': 3}
+Open_nestedTab(tab_list, nest, 3)
+SaveTabs(tab_list,file)
+print(tab_list)
