@@ -81,20 +81,22 @@ def clear_Tabs(tablist):#choice 6
    tab_list.clear() # cleared all the tabs that are open
    print("tabs have been cleard")
 
-def SaveTabs(tab_list, filepath):
-    with open(filepath, 'w') as jsonfile:
-        # Use json.dumps to convert the tab_list to a JSON-formatted string
-        json_data = json.dumps(tab_list)
+def SaveTabs(tab_list, filepath):#choice 7 
+    with open(filepath, 'w') as jsonfile: # open file to write for it 
+        
+        json_data = json.dumps(tab_list) # convert to json formated string using .dumps
         
         # Write the JSON-formatted string to the file
-        jsonfile.write(json_data)
+        jsonfile.write(json_data) # writing to the file the formated string 
       
 def checkjson(file):
-    check=file.split('.')
-    for i in check:
-        if i=='json':
-            return True
-        else: return False
+  pass
 file='file.json'
 
-SaveTabs(tab_list,file)
+
+def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
+    with open(file) as f:
+      d = json.load(f)
+    print(d)
+  
+Import_Tabs(file)
