@@ -70,3 +70,51 @@ def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5a
     with open(file) as f:
       d = json.load(f)
     print(d)
+while True:
+      print("1. Open Tab")
+      print("2. Close Tab")
+      print("3. Switch Tab")
+      print("4. Display All Tabs")
+      print("5. Open Nested Tab")
+      print("6. Clear All Tabs")
+      print("7. Save Tabs ")
+      print("8. Import Tabs")
+      print("9. Exit")
+      x=input("Enter Choice Number:")
+      if x=="1":
+          title=input('Enter Title:')
+          Url=input("Enter Url:")
+          addTab(tab_list,title,Url)
+      elif x=="2":
+          Close_Tab(tab_list)
+          print("tab has  been closed")
+      elif x=="3":
+          indx=int(input("enter index of tab to display it content:"))
+          Switch_Tab(tab_list,indx)
+      elif x=="4":
+          display_Tabs(tab_list)
+      elif x=="5":
+          index1=int(input('enter index'))
+          title1=input("enter title:")
+          url1=input("Enter url:")
+          if v.url(url1) ==True:
+            nest={"title":title1,"url":url1}
+            Open_nestedTab(tab_list,nest,index1)
+          else:
+              print("Not a url")
+      elif x=="6":
+          clear_Tabs(tab_list)
+      elif x=="7":
+          file=input('enter file path')
+          if is_json(file)==True:
+            SaveTabs(tab_list,file)
+          else:
+              print("not a json file")
+      elif x=="8":
+          file1=input('enter file path')
+          if is_json(file1)==True:
+            Import_Tabs(file1)
+          else:
+              print("Not a json file")
+      elif x=="9":
+          exit()
