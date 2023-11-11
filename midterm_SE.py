@@ -39,7 +39,7 @@ def Switch_Tab(tab_list,index=None):# choice 3
 
 def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
     if 0 <= index < len(tab_list): # check for open tabs 
-        if 'nested_tabs' not in tab_list[index]: # if a tab has no nesdted tasb 
+        if 'nested_tabs' not in tab_list[index]: # if a tab has no nesdted tab 
             tab_list[index]['nested_tabs'] = []  # create an empty list for the tab that doesn't have nested tabs
         tab_list[index]['nested_tabs'].append(nested_tab)  # append the new nested tab
         print(f"Nested tab has beeen added to '{tab_list[index]['title']}' at the index {index}.")
@@ -48,10 +48,10 @@ def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
 
 def display_Tabs(tab_list, depth=0):  # choice 4 
     for tab in tab_list:
-        if 'title' in tab:
+        if 'title' in tab:#check if title in tab
             print(" - " * depth + f"{tab['title']}")  # print the title of the main tab
 
-        if 'nested_tabs' in tab:
+        if 'nested_tabs' in tab: # check for nested tabs is tab
             display_Tabs(tab['nested_tabs'], depth + 1)  # recursively display nested tabs with increased depth
 
 
