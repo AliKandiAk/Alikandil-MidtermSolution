@@ -12,7 +12,7 @@ def addTab(tab_list,title,url):#choice 1 append a new dictionary to the list
       tab_list.append(new_tab) # append new tab to the list 
       print("Welcome to"+title)
       print(tab_list)
-    elif is_Url==False :
+    else: 
         print("incorrect url")
 
 
@@ -104,13 +104,17 @@ while True:
           display_Tabs(tab_list)
       elif x=="5":
           index1=int(input('enter index'))
-          title1=input("enter title:")
-          url1=input("Enter url:")
-          if v.url(url1) ==True:
-            nest={"title":title1,"url":url1}
-            Open_nestedTab(tab_list,nest,index1)
+          if 0<=index1 and index1<len(tab_list) :
+            title1=input("enter title:")
+            url1=input("Enter url:")
+            if v.url(url1) ==True :
+              nest={"title":title1,"url":url1}
+              Open_nestedTab(tab_list,nest,index1)
+            else:
+                print("Not a url")
           else:
-              print("Not a url")
+              print("Index about of bound")
+          
       elif x=="6":
           clear_Tabs(tab_list)
       elif x=="7":
@@ -128,3 +132,5 @@ while True:
               print("Not a json file")
       elif x=="9":
           exit()
+      else:
+          print("error Enter one of the available numbers")
