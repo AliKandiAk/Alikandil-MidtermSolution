@@ -77,7 +77,7 @@ def is_json(file):
 
 def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
     with open(file) as f:
-      d = json.load(f)
+      d = json.load(f)# loads the data from json file to python file and print it 
     print(d)
 
 
