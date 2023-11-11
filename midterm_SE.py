@@ -1,5 +1,6 @@
 import validators as v #https://snyk.io/blog/secure-python-url-validation/
 import requests
+import json
 from bs4 import BeautifulSoup 
 tab_list = [
     {
@@ -64,7 +65,7 @@ def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
         if 'nested_tabs' not in tab_list[index]: # if a tab has no nesdted tasb 
             tab_list[index]['nested_tabs'] = []  # create an empty list for the tab that doesn't have nested tabs
         tab_list[index]['nested_tabs'].append(nested_tab)  # append the new nested tab
-        print(f"Nested tab added to '{tab_list[index]['title']}' at index {index}.")
+        print(f"Nested tab has beeen added to '{tab_list[index]['title']}' at the index {index}.")
     else:
         print(f"Invalid index: {index}")
 
@@ -80,7 +81,20 @@ def clear_Tabs(tablist):#choice 6
    tab_list.clear() # cleared all the tabs that are open
    print("tabs have been cleard")
 
-# Example usage:
-nest = {"title": "Subtab title", "url": "http://example.com/Subtab1"}
-Open_nestedTab(tab_list, nest, 1)
-display_Tabs(tab_list)
+def SaveTabs(tab_list, filepath):
+    with open(filepath, 'w') as jsonfile:
+        # Use json.dumps to convert the tab_list to a JSON-formatted string
+        json_data = json.dumps(tab_list)
+        
+        # Write the JSON-formatted string to the file
+        jsonfile.write(json_data)
+      
+def checkjson(file):
+    check=file.split('.')
+    for i in check:
+        if i=='json':
+            return True
+        else: return False
+file='file.json'
+
+SaveTabs(tab_list,file)
