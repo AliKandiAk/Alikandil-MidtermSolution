@@ -1,18 +1,20 @@
 import validators as v #https://snyk.io/blog/secure-python-url-validation/
 import requests
 import json
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup 
+
 tab_list=[]
 def addTab(tab_list,title,url):#choice 1 append a new dictionary to the list
     is_Url=v.url(url)# gives true if its a url or false if not 
-    index=len(tab_list)
-    if is_Url:
+    index=len(tab_list) # get lenth of list
+    if is_Url: 
       new_tab= {"title":title,"url":url,"index":index}
-      tab_list.append(new_tab)
+      tab_list.append(new_tab) # append new tab to the list 
       print("Welcome to"+title)
       print(tab_list)
     elif is_Url==False :
         print("incorrect url")
+
 
 def Close_Tab(tab_list,index=None): # choice 2 delete tab
     if index==None:
@@ -22,7 +24,8 @@ def Close_Tab(tab_list,index=None): # choice 2 delete tab
     else: 
         del tab_list[index] # delete dictionary acording to index
         print(tab_list)
-        
+
+
 def Switch_Tab(tab_list,index=None):# choice 3 
     if index is None:
 
@@ -33,14 +36,7 @@ def Switch_Tab(tab_list,index=None):# choice 3
       html_text=requests.get(tab_list[index]["url"])#https://www.w3schools.com/python/ref_requests_get.asp
       soup=BeautifulSoup(html_text.content,'html.parser')#https://www.educative.io/answers/beautiful-soup-prettify
       print(soup.prettify())  # prittify method got from a wbsite link above 
-def display_Tabs(tab_list, depth=0):  # choice 4 
-    for tab in tab_list:
-        if 'title' in tab:
-            print(" - " * depth + f"{tab['title']}")  # print the title of the main tab
 
-        if 'nested_tabs' in tab:
-            display_Tabs(tab['nested_tabs'], depth + 1)  # recursively display nested tabs with increased depth
-            
 def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
     if 0 <= index < len(tab_list): # check for open tabs 
         if 'nested_tabs' not in tab_list[index]: # if a tab has no nesdted tasb 
@@ -49,16 +45,28 @@ def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
         print(f"Nested tab has beeen added to '{tab_list[index]['title']}' at the index {index}.")
     else:
         print(f"Invalid index: {index}")
-        
+
+def display_Tabs(tab_list, depth=0):  # choice 4 
+    for tab in tab_list:
+        if 'title' in tab:
+            print(" - " * depth + f"{tab['title']}")  # print the title of the main tab
+
+        if 'nested_tabs' in tab:
+            display_Tabs(tab['nested_tabs'], depth + 1)  # recursively display nested tabs with increased depth
+
+
 def clear_Tabs(tablist):#choice 6 
    tablist.clear() # cleared all the tabs that are open
    print("tabs have been cleard")
 
 def SaveTabs(tab_list, filepath):#choice 7 
     with open(filepath, 'w') as jsonfile: # open file to write for it 
+        
         json_data = json.dumps(tab_list) # convert to json formated string using .dumps
+        
         # Write the JSON-formatted string to the file
-        jsonfile.write(json_data) # writing to the file the formated string
+        jsonfile.write(json_data) # writing to the file the formated string 
+      
 def is_json(file):
   check=file.split('.') # split creats a list and put items on each index after "."
   if check[1]=='json'and len(check)==1:
@@ -66,10 +74,13 @@ def is_json(file):
   else:
       return False
 
+
 def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
     with open(file) as f:
       d = json.load(f)
     print(d)
+
+
 while True:
       print("1. Open Tab")
       print("2. Close Tab")
