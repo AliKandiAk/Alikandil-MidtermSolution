@@ -56,8 +56,12 @@ def clear_Tabs(tablist):#choice 6
 
 def SaveTabs(tab_list, filepath):#choice 7 
     with open(filepath, 'w') as jsonfile: # open file to write for it 
-        
         json_data = json.dumps(tab_list) # convert to json formated string using .dumps
-        
         # Write the JSON-formatted string to the file
         jsonfile.write(json_data) # writing to the file the formated string
+def is_json(file):
+  check=file.split('.') # split creats a list and put items on each index after "."
+  if check[1]=='json'and len(check)==1:
+      return True
+  else:
+      return False
