@@ -69,7 +69,7 @@ def SaveTabs(tab_list, filepath):#choice 7 #https://www.datacamp.com/tutorial/js
       
 def is_json(file):
   check=file.split('.') # split creats a list and put items on each index after "."
-  if check[1]=='json'and len(check)==1:
+  if check[1]=='json'and len(check)==1:# check if at index 1 has word string json and the length is only 1 so only 2 indexs 0 and 1 
       return True
   else:
       return False
