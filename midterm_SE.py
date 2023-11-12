@@ -1,3 +1,4 @@
+#check last change for code 1
 import validators as v #https://snyk.io/blog/secure-python-url-validation/
 import requests
 import json
@@ -14,6 +15,7 @@ def addTab(tab_list,title,url):#choice 1 append a new dictionary to the list
     else: 
         print("incorrect url")
 
+
 def Close_Tab(tab_list,index=None): # choice 2 delete tab
     if index is None:
         del tab_list[-1] # index pointing top last index in a list and deleting it  
@@ -22,6 +24,7 @@ def Close_Tab(tab_list,index=None): # choice 2 delete tab
     else: 
         del tab_list[index] # delete dictionary acording to index
         print(tab_list)
+
 
 def Switch_Tab(tab_list,index=None):# choice 3 
     if index is None:
@@ -40,6 +43,7 @@ def display_Tabs(tab_list, depth=0):  # choice 4
 
         if 'nested_tabs' in tab: # check for nested tabs is tab
             display_Tabs(tab['nested_tabs'], depth + 1)  # recursively display nested tabs with increased depth
+
 
 def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
     if 0 <= index < len(tab_list): # check for open tabs 
@@ -68,7 +72,6 @@ def is_json(file):
         return True
   else:
       return False
-      
 def Import_Tabs(file,tablist):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
     d=[]
     with open(file) as f:
