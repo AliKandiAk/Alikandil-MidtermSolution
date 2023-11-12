@@ -1,4 +1,4 @@
-#check last change for code 1
+#check last change for code 2
 import validators as v #https://snyk.io/blog/secure-python-url-validation/
 import requests
 import json
@@ -10,7 +10,7 @@ def addTab(tab_list,title,url):#choice 1 append a new dictionary to the list
     if is_Url: 
       new_tab= {"title":title,"url":url}
       tab_list.append(new_tab) # append new tab to the list 
-      print("Welcome to"+title)
+      print("Welcome to "+ title)
       print(tab_list)
     else: 
         print("incorrect url")
