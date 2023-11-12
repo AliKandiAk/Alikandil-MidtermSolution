@@ -17,7 +17,7 @@ def addTab(tab_list,title,url):#choice 1 append a new dictionary to the list
 
 
 def Close_Tab(tab_list,index=None): # choice 2 delete tab
-    if index==None:
+    if index is None:
         del tab_list[-1] # index pointing top last index in a list and deleting it  
         print("last tab has been closed")
         print(tab_list)
@@ -95,7 +95,8 @@ while True:
           Url=input("Enter Url:")
           addTab(tab_list,title,Url)
       elif x=="2":
-          Close_Tab(tab_list)
+          i= int(input("Enter tab index to close:"))
+          Close_Tab(tab_list,i)
           print("tab has  been closed")
       elif x=="3":
           indx=int(input("enter index of tab to display it content:"))
