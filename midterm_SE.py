@@ -5,16 +5,14 @@ from bs4 import BeautifulSoup
 
 tab_list=[]
 def addTab(tab_list,title,url):#choice 1 append a new dictionary to the list
-    is_Url=v.url(url)# gives true if its a url or false if not 
-    index=len(tab_list) # get lenth of list
+    is_Url=v.url(url)# gives true if its a url or false 
     if is_Url: 
-      new_tab= {"title":title,"url":url,"index":index}
+      new_tab= {"title":title,"url":url}
       tab_list.append(new_tab) # append new tab to the list 
       print("Welcome to"+title)
       print(tab_list)
     else: 
         print("incorrect url")
-
 
 def Close_Tab(tab_list,index=None): # choice 2 delete tab
     if index is None:
@@ -25,10 +23,8 @@ def Close_Tab(tab_list,index=None): # choice 2 delete tab
         del tab_list[index] # delete dictionary acording to index
         print(tab_list)
 
-
 def Switch_Tab(tab_list,index=None):# choice 3 
     if index is None:
-
       html_text=requests.get(tab_list[-1]["url"])#https://www.w3schools.com/python/ref_requests_get.asp
       soup=BeautifulSoup(html_text.content,'html.parser')#https://www.educative.io/answers/beautiful-soup-prettify
       print(soup.prettify())  # prittify method got from a wbsite link above 
@@ -44,7 +40,6 @@ def display_Tabs(tab_list, depth=0):  # choice 4
 
         if 'nested_tabs' in tab: # check for nested tabs is tab
             display_Tabs(tab['nested_tabs'], depth + 1)  # recursively display nested tabs with increased depth
-
 
 def Open_nestedTab(tab_list, nested_tab, index):  # choice 5
     if 0 <= index < len(tab_list): # check for open tabs 
@@ -73,10 +68,13 @@ def is_json(file):
         return True
   else:
       return False
-def Import_Tabs(file):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
+      
+def Import_Tabs(file,tablist):#choice 8 #https://github.com/nkmk/python-snippets/blob/5ad4cd3391ffdd8bf9d16d46d110db0fe3e9eced/notebook/json_example.py#L21-L28
+    d=[]
     with open(file) as f:
       d = json.load(f)# loads the data from json file to python file and print it 
-    print(d)
+      tab_list.append(d)# append the json data to the main tab list 
+    print(tab_list)
 
 
 while True:
@@ -128,7 +126,7 @@ while True:
       elif x=="8":
           file1=input('enter file path')
           if is_json(file1)==True:
-            Import_Tabs(file1)
+            Import_Tabs(file1,tab_list)
           else:
               print("Not a json file")
       elif x=="9":
